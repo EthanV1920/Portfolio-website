@@ -17,7 +17,7 @@ export const siteConfig: SiteConfig = {
   links: [
     { label: "GitHub", enabled: true, note: "Repository channel", href: "https://github.com/EthanV1920"},
     { label: "LinkedIn", enabled: true, note: "Professional signal", href: "https://www.linkedin.com/in/evosburg/"},
-    { label: "X / Twitter", enabled: false, note: "Broadcast notes" },
+    { label: "Vosburg Producions", enabled: true, note: "Broadcast Worldwide", href: "https://vprovids.com" },
     { label: "Email", enabled: false, note: "Direct contact" },
     { label: "Resume", enabled: false, note: "Credential deck" },
   ],

@@ -9,17 +9,20 @@ export default function Home() {
     <main className="relative min-h-screen overflow-hidden bg-[var(--bg-base)] text-[var(--text-primary)]">
       <AmbientFrame />
       <CursorGlow />
-      <div className="relative mx-auto flex min-h-screen w-full max-w-7xl flex-col gap-4 px-5 py-5 sm:gap-5 sm:px-6 sm:py-6 lg:gap-6 lg:px-8 lg:py-8">
-        <div className="flex items-center justify-between border border-[var(--border-strong)] bg-[var(--surface-veil)] px-4 py-3 backdrop-blur-xl">
+      <div className="relative mx-auto flex min-h-screen w-full max-w-7xl flex-col gap-4 px-4 py-4 sm:gap-5 sm:px-6 sm:py-6 lg:gap-6 lg:px-8 lg:py-8">
+        <div className="flex items-center justify-between border border-[var(--border-strong)] bg-[rgba(10,14,20,0.82)] px-4 py-3">
           <p className="font-mono text-[10px] uppercase tracking-[0.34em] text-[var(--text-muted)] sm:text-xs">
             EV / Portfolio / v1
           </p>
-          <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-[var(--text-dim)] sm:text-xs">
+          <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-[var(--text-dim)] sm:hidden">
+            Mobile Index
+          </p>
+          <p className="hidden font-mono text-[10px] uppercase tracking-[0.28em] text-[var(--text-dim)] sm:block sm:text-xs">
             Vosburg Portfolio
           </p>
         </div>
 
-        <section className="grid flex-1 gap-6 lg:grid-cols-[minmax(0,1.35fr)_minmax(320px,0.8fr)] lg:gap-8">
+        <section className="grid flex-1 gap-4 sm:gap-5 lg:grid-cols-[minmax(0,1.35fr)_minmax(320px,0.8fr)] lg:gap-8">
           <Hero name={siteConfig.name} roles={siteConfig.roles} />
           <LinkDock links={siteConfig.links} />
         </section>

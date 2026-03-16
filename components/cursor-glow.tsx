@@ -7,7 +7,6 @@ export function CursorGlow() {
 
   useEffect(() => {
     const glow = glowRef.current;
-    const root = document.documentElement;
 
     if (!glow) {
       return;
@@ -18,8 +17,6 @@ export function CursorGlow() {
 
     if (prefersReducedMotion.matches || !finePointer.matches) {
       glow.style.setProperty("--cursor-opacity", "0");
-      root.style.setProperty("--grid-cursor-x", "0px");
-      root.style.setProperty("--grid-cursor-y", "0px");
       return;
     }
 
@@ -36,12 +33,6 @@ export function CursorGlow() {
 
       glow.style.setProperty("--cursor-x", `${currentX}px`);
       glow.style.setProperty("--cursor-y", `${currentY}px`);
-
-      const offsetX = ((currentX / window.innerWidth) - 0.5) * 28;
-      const offsetY = ((currentY / window.innerHeight) - 0.5) * 20;
-
-      root.style.setProperty("--grid-cursor-x", `${offsetX}px`);
-      root.style.setProperty("--grid-cursor-y", `${offsetY}px`);
 
       const settled =
         Math.abs(targetX - currentX) < 0.2 &&
@@ -83,8 +74,6 @@ export function CursorGlow() {
 
     const handlePointerLeave = () => {
       glow.style.setProperty("--cursor-opacity", "0");
-      root.style.setProperty("--grid-cursor-x", "0px");
-      root.style.setProperty("--grid-cursor-y", "0px");
       stop();
     };
 
@@ -95,8 +84,6 @@ export function CursorGlow() {
       targetY = currentY;
       glow.style.setProperty("--cursor-x", `${currentX}px`);
       glow.style.setProperty("--cursor-y", `${currentY}px`);
-      root.style.setProperty("--grid-cursor-x", "0px");
-      root.style.setProperty("--grid-cursor-y", "0px");
     };
 
     handleResize();
@@ -108,8 +95,6 @@ export function CursorGlow() {
 
     return () => {
       stop();
-      root.style.setProperty("--grid-cursor-x", "0px");
-      root.style.setProperty("--grid-cursor-y", "0px");
       window.removeEventListener("pointermove", handlePointerMove);
       window.removeEventListener("pointerleave", handlePointerLeave);
       window.removeEventListener("blur", handlePointerLeave);
