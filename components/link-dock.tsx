@@ -6,7 +6,7 @@ type LinkDockProps = {
 
 export function LinkDock({ links }: LinkDockProps) {
   return (
-    <aside className="dock-panel border border-[var(--border-strong)] bg-[linear-gradient(180deg,rgba(12,17,24,0.92)_0%,rgba(8,11,16,0.84)_100%)] p-4 shadow-[var(--shadow-panel)] backdrop-blur-2xl sm:p-5 lg:min-h-[32rem] lg:self-end">
+    <aside className="dock-panel border border-[var(--border-strong)] bg-[linear-gradient(180deg,rgba(12,17,24,0.92)_0%,rgba(8,11,16,0.84)_100%)] p-4 shadow-[var(--shadow-panel)] backdrop-blur-2xl sm:p-5 lg:h-full">
       <div className="flex items-center justify-between gap-4 border-b border-[var(--border-subtle)] pb-4">
         <div>
           <p className="font-mono text-[10px] uppercase tracking-[0.34em] text-[var(--text-muted)] sm:text-xs">
