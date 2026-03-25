@@ -56,7 +56,6 @@ export function LinkDock({ links }: LinkDockProps) {
             Whats going on now...
           </p>
         </div>
-        <div className="hidden h-11 w-11 border border-[var(--border-subtle)] bg-[linear-gradient(135deg,rgba(139,184,255,0.18),rgba(255,255,255,0.02))] sm:block" />
       </div>
 
       <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-1">

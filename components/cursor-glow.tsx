@@ -88,17 +88,17 @@ export function CursorGlow() {
 
     handleResize();
 
-    window.addEventListener("pointermove", handlePointerMove, { passive: true });
-    window.addEventListener("pointerleave", handlePointerLeave);
-    window.addEventListener("blur", handlePointerLeave);
-    window.addEventListener("resize", handleResize);
+    // window.addEventListener("pointermove", handlePointerMove, { passive: true });
+    // window.addEventListener("pointerleave", handlePointerLeave);
+    // window.addEventListener("blur", handlePointerLeave);
+    // window.addEventListener("resize", handleResize);
 
     return () => {
       stop();
-      window.removeEventListener("pointermove", handlePointerMove);
-      window.removeEventListener("pointerleave", handlePointerLeave);
-      window.removeEventListener("blur", handlePointerLeave);
-      window.removeEventListener("resize", handleResize);
+      // window.removeEventListener("pointermove", handlePointerMove);
+      // window.removeEventListener("pointerleave", handlePointerLeave);
+      // window.removeEventListener("blur", handlePointerLeave);
+      // window.removeEventListener("resize", handleResize);
     };
   }, []);
 

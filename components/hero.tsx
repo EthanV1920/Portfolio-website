@@ -16,10 +16,6 @@ export function Hero({ name, roles }: HeroProps) {
                 Broadcast / Systems / Compute
               </p>
             </div>
-            <div className="inline-flex items-center gap-2 self-start border border-[var(--border-subtle)] bg-[var(--surface-soft)] px-3 py-2 text-[10px] uppercase tracking-[0.28em] text-[var(--text-dim)] sm:self-auto sm:text-xs">
-            <span className="status-pulse h-3 w-3 rounded-full bg-[var(--accent)] shadow-[0_0_18px_var(--accent-glow)]" />
-            Rendering
-            </div>
           </div>
 
           <div className="max-w-4xl">
