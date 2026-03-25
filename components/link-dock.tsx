@@ -5,7 +5,7 @@ type LinkDockProps = {
 };
 
 export function LinkDock({ links }: LinkDockProps) {
-  const renderMobileTile = (link: LinkItem, index: number) => {
+  const renderLink = (link: LinkItem, index: number) => {
     const isInteractive = Boolean(link.enabled && link.href);
     const Component = isInteractive ? "a" : "div";
 
@@ -19,52 +19,16 @@ export function LinkDock({ links }: LinkDockProps) {
               rel: "noreferrer",
             }
           : {})}
-        className="group relative flex min-h-32 flex-col justify-between overflow-hidden border border-[var(--border-subtle)] bg-[var(--surface-soft)] p-3 transition duration-300 hover:border-[var(--border-strong)] hover:bg-[var(--surface-strong)]"
+        className="group relative flex min-h-32 flex-col justify-between overflow-hidden border border-[var(--border-subtle)] bg-[var(--surface-soft)] px-3 py-3 transition-[background-color,border-color,opacity] duration-200 hover:border-[var(--border-strong)] hover:bg-[var(--surface-strong)] sm:min-h-0 sm:flex-row sm:items-center sm:gap-4 sm:px-4 sm:py-4"
       >
-        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--accent)] to-transparent opacity-0 transition duration-300 group-hover:opacity-100" />
-        <div className="flex items-center justify-between gap-3">
-          <p className="font-mono text-[10px] uppercase tracking-[0.32em] text-[var(--text-dim)]">
-            Slot 0{index + 1}
-          </p>
-          <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-[var(--text-muted)]">
-            {isInteractive ? "Live" : "Pending"}
-          </p>
-        </div>
-        <div>
-          <p className="text-base font-medium tracking-[-0.02em] text-[var(--text-primary)]">
-            {link.label}
-          </p>
-          <p className="mt-2 text-xs leading-5 text-[var(--text-dim)]">
-            {link.note}
-          </p>
-        </div>
-      </Component>
-    );
-  };
-
-  const renderDesktopRow = (link: LinkItem, index: number) => {
-    const isInteractive = Boolean(link.enabled && link.href);
-    const Component = isInteractive ? "a" : "div";
-
-    return (
-      <Component
-        key={link.label}
-        {...(isInteractive
-          ? {
-              href: link.href,
-              target: "_blank",
-              rel: "noreferrer",
-            }
-          : {})}
-        className="group relative overflow-hidden border border-[var(--border-subtle)] bg-[var(--surface-soft)] transition duration-300 hover:border-[var(--border-strong)] hover:bg-[var(--surface-strong)]"
-      >
-        <div className="absolute inset-y-0 left-0 w-px bg-gradient-to-b from-transparent via-[var(--accent)] to-transparent opacity-0 transition duration-300 group-hover:opacity-100" />
-        <div className="flex items-center justify-between gap-4 px-4 py-4">
+        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--accent)] to-transparent opacity-0 transition-opacity duration-200 group-hover:opacity-100 sm:hidden" />
+        <div className="absolute inset-y-0 left-0 hidden w-px bg-gradient-to-b from-transparent via-[var(--accent)] to-transparent opacity-0 transition-opacity duration-200 group-hover:opacity-100 sm:block" />
+        <div className="flex items-center justify-between gap-3 sm:min-w-0 sm:flex-1 sm:items-start sm:justify-between">
           <div>
             <p className="font-mono text-[10px] uppercase tracking-[0.32em] text-[var(--text-dim)] sm:text-xs">
               Slot 0{index + 1}
             </p>
-            <p className="mt-2 text-lg font-medium tracking-[-0.02em] text-[var(--text-primary)]">
+            <p className="mt-2 text-base font-medium tracking-[-0.02em] text-[var(--text-primary)] sm:text-lg">
               {link.label}
             </p>
           </div>
@@ -72,7 +36,7 @@ export function LinkDock({ links }: LinkDockProps) {
             <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-[var(--text-muted)] sm:text-xs">
               {isInteractive ? "Live" : "Pending"}
             </p>
-            <p className="mt-2 text-sm text-[var(--text-dim)]">
+            <p className="mt-2 max-w-[14rem] text-xs leading-5 text-[var(--text-dim)] sm:text-sm">
               {link.note}
             </p>
           </div>
@@ -95,12 +59,8 @@ export function LinkDock({ links }: LinkDockProps) {
         <div className="hidden h-11 w-11 border border-[var(--border-subtle)] bg-[linear-gradient(135deg,rgba(139,184,255,0.18),rgba(255,255,255,0.02))] sm:block" />
       </div>
 
-      <div className="mt-4 grid grid-cols-2 gap-3 sm:hidden">
-        {links.map(renderMobileTile)}
-      </div>
-
-      <div className="mt-4 hidden gap-3 sm:grid">
-        {links.map(renderDesktopRow)}
+      <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-1">
+        {links.map(renderLink)}
       </div>
     </aside>
   );

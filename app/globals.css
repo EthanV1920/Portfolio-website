@@ -33,8 +33,7 @@ body {
     margin: 0;
     min-height: 100vh;
     background:
-        radial-gradient(circle at top left, rgba(139, 184, 255, 0.14), transparent 30%),
-        radial-gradient(circle at bottom right, rgba(216, 163, 93, 0.1), transparent 26%),
+        radial-gradient(circle at top left, rgba(139, 184, 255, 0.11), transparent 28%),
         linear-gradient(180deg, #090c10 0%, #05070a 100%);
     color: var(--text-primary);
     font-family: var(--font-display), sans-serif;
@@ -70,21 +69,20 @@ a {
 
 .panel-grid {
     background-image:
-        linear-gradient(rgba(163, 179, 195, 0.065) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(163, 179, 195, 0.065) 1px, transparent 1px);
+        linear-gradient(rgba(163, 179, 195, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(163, 179, 195, 0.05) 1px, transparent 1px);
     background-position: center;
-    background-size: 88px 88px;
+    background-size: 96px 96px;
 }
 
 .ambient-loop {
     background:
-        radial-gradient(44rem circle at 18% 24%, rgba(139, 184, 255, 0.14), transparent 48%),
-        radial-gradient(36rem circle at 82% 68%, rgba(216, 163, 93, 0.09), transparent 42%),
-        linear-gradient(115deg, rgba(255, 255, 255, 0.015), transparent 42%, rgba(139, 184, 255, 0.045) 64%, transparent 78%),
+        radial-gradient(36rem circle at 20% 22%, rgba(139, 184, 255, 0.12), transparent 46%),
+        radial-gradient(28rem circle at 80% 66%, rgba(216, 163, 93, 0.06), transparent 40%),
         linear-gradient(180deg, rgba(10, 14, 20, 0), rgba(5, 7, 10, 0.58) 100%);
-    background-size: 100% 100%, 100% 100%, 120% 120%, 100% 100%;
-    background-position: 0% 0%, 100% 100%, 0% 50%, 50% 50%;
-    filter: blur(14px);
+    background-size: 100% 100%;
+    background-position: 0% 0%, 100% 100%, 50% 50%;
+    filter: blur(10px);
 }
 
 .hero-title {
@@ -110,22 +108,22 @@ a {
 
 .cursor-glow::before {
     background:
-        radial-gradient(42rem circle at var(--cursor-x) var(--cursor-y), rgba(139, 184, 255, 0.22),
+        radial-gradient(30rem circle at var(--cursor-x) var(--cursor-y), rgba(139, 184, 255, 0.18),
             rgba(139, 184, 255, 0.08) 24%,
-            transparent 60%);
-    filter: blur(30px);
+            transparent 56%);
+    filter: blur(22px);
 }
 
 .cursor-glow::after {
     background:
-        radial-gradient(34rem circle at var(--cursor-x) var(--cursor-y),
-            rgba(216, 163, 93, 0.06),
-            transparent 48%);
-    filter: blur(34px);
+        radial-gradient(24rem circle at var(--cursor-x) var(--cursor-y),
+            rgba(216, 163, 93, 0.05),
+            transparent 44%);
+    filter: blur(24px);
 }
 
 .status-pulse {
-    animation: status-pulse 2.85s ease-in-out infinite;
+    animation: status-pulse 3.2s ease-in-out infinite;
 }
 
 @keyframes status-pulse {
@@ -138,9 +136,9 @@ a {
     }
 
     50% {
-        opacity: 1;
-        transform: scale(1.2);
-        box-shadow: 0 0 0 10px rgba(139, 184, 255, 0);
+        opacity: 0.92;
+        transform: scale(1.08);
+        box-shadow: 0 0 0 6px rgba(139, 184, 255, 0);
     }
 }
 
@@ -156,6 +154,12 @@ a {
     }
 }
 
+@media (max-width: 1023px), (hover: none), (pointer: coarse) {
+    .cursor-glow {
+        display: none;
+    }
+}
+
 @media (max-width: 639px) {
     .hero-title {
         font-size: clamp(3rem, 16vw, 4.6rem);
@@ -164,11 +168,11 @@ a {
     }
 
     .ambient-loop {
-        opacity: 0.55;
-        filter: blur(12px);
+        opacity: 0.48;
+        filter: blur(8px);
     }
 
     .panel-grid {
-        opacity: 0.24;
+        display: none;
     }
 }
