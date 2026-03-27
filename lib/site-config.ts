@@ -22,6 +22,6 @@ export const siteConfig: SiteConfig = {
     { label: "LinkedIn", enabled: true, note: "Professional signal", href: "https://www.linkedin.com/in/evosburg/"},
     { label: "Vosburg Productions", enabled: true, note: "Broadcast Worldwide", href: "https://vprovids.com" },
     { label: "Email", enabled: false, note: "Direct contact" },
-    { label: "Resume", enabled: true, note: "Open PDF viewer", href: "/resume" },
+    { label: "Resume", enabled: true, note: "Open PDF viewer", href: "/resume.html" },
   ],
 };
