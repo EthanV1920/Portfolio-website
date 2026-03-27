@@ -14,4 +14,7 @@ npm run dev
 ```bash
 npm run build
 docker build -t vosburg-portfolio .
+docker run --rm -p 8070:80 vosburg-portfolio
 ```
+
+Then open `http://localhost:8070`.
