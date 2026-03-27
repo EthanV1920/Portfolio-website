@@ -1,3 +1,7 @@
+"use client";
+
+import { useEffect, useState } from "react";
+
 import type { LinkItem } from "@/lib/site-config";
 
 type LinkDockProps = {
@@ -5,9 +9,27 @@ type LinkDockProps = {
 };
 
 export function LinkDock({ links }: LinkDockProps) {
+  const [preferDirectResumePdf, setPreferDirectResumePdf] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 639px)");
+    const updatePreference = () => {
+      setPreferDirectResumePdf(mediaQuery.matches);
+    };
+
+    updatePreference();
+    mediaQuery.addEventListener("change", updatePreference);
+
+    return () => {
+      mediaQuery.removeEventListener("change", updatePreference);
+    };
+  }, []);
+
   const renderLink = (link: LinkItem, index: number) => {
-    const isInteractive = Boolean(link.enabled && link.href);
-    const isExternal = Boolean(link.href?.startsWith("http"));
+    const href =
+      link.label === "Resume" && preferDirectResumePdf ? "/resume.pdf" : link.href;
+    const isInteractive = Boolean(link.enabled && href);
+    const isExternal = Boolean(href?.startsWith("http"));
     const Component = isInteractive ? "a" : "div";
 
     return (
@@ -15,7 +37,7 @@ export function LinkDock({ links }: LinkDockProps) {
         key={link.label}
         {...(isInteractive
           ? {
-              href: link.href,
+              href,
               ...(isExternal
                 ? {
                     target: "_blank",
@@ -51,9 +73,6 @@ export function LinkDock({ links }: LinkDockProps) {
         <div>
           <p className="font-mono text-[10px] uppercase tracking-[0.34em] text-[var(--text-muted)] sm:text-xs">
             Link Dock
-          </p>
-          <p className="mt-2 max-w-[16rem] text-sm leading-6 text-[var(--text-secondary)]">
-            Whats going on now...
           </p>
         </div>
       </div>
