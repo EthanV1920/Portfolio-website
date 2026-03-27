@@ -14,6 +14,19 @@ export type SiteConfig = {
 export const resumePdfUrl =
   "/resume.pdf";
 
+export function getTrackedLinkHref(link: LinkItem): string | undefined {
+  if (!link.href) {
+    return undefined;
+  }
+
+  const params = new URLSearchParams({
+    label: link.label,
+    target: link.href,
+  });
+
+  return `/out.html?${params.toString()}`;
+}
+
 export const siteConfig: SiteConfig = {
   name: "Ethan Vosburg",
   roles: ["Broadcast Engineer", "Computer Engineer"],
