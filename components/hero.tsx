@@ -17,15 +17,15 @@ export function Hero({ name, roles }: HeroProps) {
           </div>
 
           <p className="pt-4 font-mono text-[10px] uppercase leading-5 tracking-[0.26em] text-[var(--text-dim)] sm:pt-6 sm:text-xs lg:max-w-[24rem]">
-            Systems thinking with clean execution across broadcast and compute.
+            Systems thinking merged with technical problem solving across broadcast and computing.
           </p>
         </div>
 
-        <div className="grid grid-cols-2 gap-3 pt-4 lg:grid-cols-1 lg:pt-0">
+        <div className="grid grid-cols-2 gap-3 pt-4 lg:pt-0">
           {roles.map((role, index) => (
             <div
               key={role}
-              className="flex min-h-16 flex-col justify-between px-3 py-3 sm:min-h-14 lg:min-h-0 lg:flex-row lg:items-center"
+              className="flex min-h-16 flex-col gap-1.5 px-3 py-3 sm:min-h-14 lg:min-h-0 lg:flex-row lg:items-center lg:gap-6"
             >
               <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-[var(--text-dim)] sm:text-xs">
                 0{index + 1}
