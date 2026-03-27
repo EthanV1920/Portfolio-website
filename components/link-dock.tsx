@@ -1,4 +1,4 @@
-import { getTrackedLinkHref, type LinkItem } from "@/lib/site-config";
+import type { LinkItem } from "@/lib/site-config";
 
 type LinkDockProps = {
   links: LinkItem[];
@@ -6,8 +6,8 @@ type LinkDockProps = {
 
 export function LinkDock({ links }: LinkDockProps) {
   const renderLink = (link: LinkItem, index: number) => {
-    const trackedHref = link.enabled ? getTrackedLinkHref(link) : undefined;
-    const isInteractive = Boolean(trackedHref);
+    const isInteractive = Boolean(link.enabled && link.href);
+    const isExternal = Boolean(link.href?.startsWith("http"));
     const Component = isInteractive ? "a" : "div";
 
     return (
@@ -15,7 +15,13 @@ export function LinkDock({ links }: LinkDockProps) {
         key={link.label}
         {...(isInteractive
           ? {
-              href: trackedHref,
+              href: link.href,
+              ...(isExternal
+                ? {
+                    target: "_blank",
+                    rel: "noreferrer",
+                  }
+                : {}),
             }
           : {})}
         className="group relative flex min-h-32 flex-col justify-between overflow-hidden border border-[var(--border-subtle)] bg-[var(--surface-soft)] px-3 py-3 transition-[background-color,border-color,opacity] duration-200 hover:border-[var(--border-strong)] hover:bg-[var(--surface-strong)] sm:min-h-0 sm:flex-row sm:items-center sm:gap-4 sm:px-4 sm:py-4"
@@ -33,7 +39,6 @@ export function LinkDock({ links }: LinkDockProps) {
             <p className="mt-2 max-w-[14rem] text-xs leading-5 text-[var(--text-dim)] sm:text-sm">
               {link.note}
             </p>
-
           </div>
         </div>
       </Component>

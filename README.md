@@ -33,5 +33,3 @@ If you start the container with the volume mount above, you can read them on the
 ```bash
 tail -f /opt/vosburg-logs/visits.json
 ```
-
-Dock link clicks are logged too. Interactive dock links first hit `/out.html?...`, which is recorded in `visits.json`, and then redirect to the final destination.

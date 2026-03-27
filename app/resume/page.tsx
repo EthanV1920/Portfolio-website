@@ -43,28 +43,15 @@ export default function ResumePage() {
 
         <section className="overflow-hidden border border-[var(--border-strong)] bg-[linear-gradient(180deg,rgba(12,17,24,0.96)_0%,rgba(8,11,16,0.92)_100%)] shadow-[var(--shadow-panel)]">
           <div className="border-b border-[var(--border-subtle)] px-4 py-3 font-mono text-[10px] uppercase tracking-[0.28em] text-[var(--text-dim)] sm:px-5 sm:text-xs">
-            Resume Access
-          </div>
-          <div className="px-4 py-5 sm:hidden">
-            <p className="text-sm leading-6 text-[var(--text-secondary)]">
-              Mobile browsers often do a better job opening PDFs directly than rendering them inline.
-            </p>
-            <a
-              href={resumePdfUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="mt-4 inline-flex items-center border border-[var(--border-subtle)] bg-[var(--surface-soft)] px-4 py-3 text-sm text-[var(--text-secondary)] transition-[background-color,border-color] duration-200 hover:border-[var(--border-strong)] hover:bg-[var(--surface-strong)]"
-            >
-              Open Resume PDF
-            </a>
+            Embedded PDF
           </div>
           <iframe
             title="Ethan Vosburg Resume PDF"
             src={`${resumePdfUrl}#view=FitH&navpanes=0`}
-            className="hidden h-[78vh] w-full bg-white sm:block"
+            className="h-[78vh] w-full bg-white"
           />
           <div className="border-t border-[var(--border-subtle)] px-4 py-3 text-sm leading-6 text-[var(--text-dim)] sm:px-5">
-            On phones, use Open Resume PDF. On larger screens, the embedded viewer should load in place.
+            If the embedded viewer does not load in your browser, use Open Raw PDF.
           </div>
         </section>
       </div>
