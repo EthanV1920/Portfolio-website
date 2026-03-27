@@ -7,6 +7,7 @@ type LinkDockProps = {
 export function LinkDock({ links }: LinkDockProps) {
   const renderLink = (link: LinkItem, index: number) => {
     const isInteractive = Boolean(link.enabled && link.href);
+    const isExternal = Boolean(link.href?.startsWith("http"));
     const Component = isInteractive ? "a" : "div";
 
     return (
@@ -15,8 +16,12 @@ export function LinkDock({ links }: LinkDockProps) {
         {...(isInteractive
           ? {
               href: link.href,
-              target: "_blank",
-              rel: "noreferrer",
+              ...(isExternal
+                ? {
+                    target: "_blank",
+                    rel: "noreferrer",
+                  }
+                : {}),
             }
           : {})}
         className="group relative flex min-h-32 flex-col justify-between overflow-hidden border border-[var(--border-subtle)] bg-[var(--surface-soft)] px-3 py-3 transition-[background-color,border-color,opacity] duration-200 hover:border-[var(--border-strong)] hover:bg-[var(--surface-strong)] sm:min-h-0 sm:flex-row sm:items-center sm:gap-4 sm:px-4 sm:py-4"
@@ -31,14 +36,10 @@ export function LinkDock({ links }: LinkDockProps) {
             <p className="mt-2 text-base font-medium tracking-[-0.02em] text-[var(--text-primary)] sm:text-lg">
               {link.label}
             </p>
-          </div>
-          <div className="text-right">
-            <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-[var(--text-muted)] sm:text-xs">
-              {isInteractive ? "Live" : "Pending"}
-            </p>
             <p className="mt-2 max-w-[14rem] text-xs leading-5 text-[var(--text-dim)] sm:text-sm">
               {link.note}
             </p>
+
           </div>
         </div>
       </Component>

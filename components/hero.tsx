@@ -23,6 +23,10 @@ export function Hero({ name, roles }: HeroProps) {
               {name}
             </h1>
           </div>
+
+          <p className="pt-4 font-mono text-[10px] uppercase leading-5 tracking-[0.26em] text-[var(--text-dim)] sm:pt-6 sm:text-xs lg:max-w-[14rem]">
+            Systems thinking with clean execution across broadcast and compute.
+          </p>
         </div>
 
         <div className="grid gap-4 border-t border-[var(--border-subtle)] pt-4 sm:gap-5 sm:pt-5 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end lg:pt-6">
@@ -41,9 +45,6 @@ export function Hero({ name, roles }: HeroProps) {
               </div>
             ))}
           </div>
-          <p className="font-mono text-[10px] uppercase leading-5 tracking-[0.26em] text-[var(--text-dim)] sm:text-xs lg:max-w-[14rem]">
-            Systems thinking with clean execution across broadcast and compute.
-          </p>
         </div>
       </div>
     </div>
